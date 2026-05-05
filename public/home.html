@@ -1,20 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemeShield — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+<body class="page-home">
 
-<body class="landing">
+  <div class="noise-overlay"></div>
 
-<div class="hero">
-  <h2>Welcome</h2>
-  <p>Choose an option</p>
+  <nav class="nav">
+    <div class="nav-logo">
+      <span class="logo-icon">🛡</span>
+      <span class="logo-text">MemeShield</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-user" id="nav-username"></span>
+      <button class="nav-logout" onclick="logout()">Sign out</button>
+    </div>
+  </nav>
 
-  <div class="actions">
-    <button onclick="location.href='chat.html'">💬 Chat</button>
-    <button onclick="location.href='upload.html'">📤 Upload Meme</button>
-  </div>
-</div>
+  <main class="home-main">
+    <div class="home-header">
+      <h1 class="home-title">Good to see you, <span id="display-username" class="accent-name"></span></h1>
+      <p class="home-sub">What would you like to do today?</p>
+    </div>
 
+    <div class="home-cards">
+
+      <a href="/chat.html" class="home-card chat-card">
+        <div class="hc-icon-wrap">
+          <span class="hc-icon">💬</span>
+        </div>
+        <div class="hc-body">
+          <h3>Chat Room</h3>
+          <p>Join the live chat, share messages, emojis, and memes. AI moderation runs automatically on every shared image.</p>
+        </div>
+        <div class="hc-arrow">→</div>
+        <div class="hc-glow chat-glow"></div>
+      </a>
+
+      <a href="/upload.html" class="home-card upload-card">
+        <div class="hc-icon-wrap">
+          <span class="hc-icon">📤</span>
+        </div>
+        <div class="hc-body">
+          <h3>Analyze Meme</h3>
+          <p>Upload a meme image and get an instant AI-powered analysis — label, confidence, and explanation.</p>
+        </div>
+        <div class="hc-arrow">→</div>
+        <div class="hc-glow upload-glow"></div>
+      </a>
+
+    </div>
+
+    <div class="home-badge">
+      <span>🤖</span>
+      <span>Powered by ResNet18-BERT Fusion · Deployed on HuggingFace Spaces</span>
+    </div>
+  </main>
+
+  <script>
+    const username = localStorage.getItem('username');
+    if (!username) window.location.href = '/login.html';
+
+    document.getElementById('display-username').textContent = username || 'User';
+    document.getElementById('nav-username').textContent = username || '';
+
+    function logout() {
+      localStorage.removeItem('username');
+      window.location.href = '/index.html';
+    }
+  </script>
 </body>
 </html>

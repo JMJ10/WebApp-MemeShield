@@ -1,15 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemeShield — AI Meme Moderation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>MemeShield</title>
 </head>
+<body class="page-landing">
 
-<body class="landing">
-  <div class="hero">
-    <h1>🛡 MemeShield</h1>
-    <p>AI-powered meme moderation using ResNet + BERT</p>
-    <button onclick="location.href='login.html'">Get Started →</button>
-  </div>
+  <div class="noise-overlay"></div>
+
+  <nav class="nav">
+    <div class="nav-logo">
+      <span class="logo-icon">🛡</span>
+      <span class="logo-text">MemeShield</span>
+    </div>
+    <a href="/login.html" class="nav-cta">Sign In</a>
+  </nav>
+
+  <main class="landing-main">
+    <div class="landing-content">
+      <div class="badge">Context-Aware AI • ResNet18 + BERT Fusion</div>
+      <h1 class="hero-title">
+        Detect offensive<br>
+        <span class="hero-accent">memes, instantly.</span>
+      </h1>
+      <p class="hero-desc">
+        MemeShield uses a multimodal AI model to analyze memes and flag offensive or harmful content — in real time, with context awareness.
+      </p>
+      <div class="hero-actions">
+        <a href="/login.html" class="btn-hero-primary">Get Started →</a>
+        <div class="hero-stat">
+          <span class="stat-icon">⚡</span>
+          <span>Powered by HuggingFace Spaces</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-visual">
+      <div class="visual-card card-main">
+        <div class="vc-header">
+          <div class="vc-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="vc-title">Analysis Result</span>
+        </div>
+        <div class="vc-image-placeholder">
+          <span>🖼</span>
+          <small>meme.jpg</small>
+        </div>
+        <div class="vc-result offensive-result">
+          <span class="result-dot red"></span>
+          <strong>Offensive Detected</strong>
+          <span class="confidence">94.2%</span>
+        </div>
+        <p class="vc-explanation">Contains hate speech targeting a protected group. Violates community guidelines.</p>
+      </div>
+      <div class="visual-card card-secondary">
+        <div class="vc-header">
+          <span class="vc-title">Chat Room</span>
+          <span class="online-badge">● Live</span>
+        </div>
+        <div class="mini-msg">
+          <div class="mini-bubble other">hey check this out 😂</div>
+          <div class="mini-bubble own">lol that's hilarious</div>
+          <div class="mini-bubble system">🛡 MemeShield is active</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="landing-footer">
+    <span>MemeShield · Context-Aware Meme &amp; Icon Interpretation System</span>
+  </footer>
+
+  <script>
+    // Subtle parallax on visual cards
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 15;
+      const y = (e.clientY / window.innerHeight - 0.5) * 15;
+      document.querySelector('.card-main').style.transform = `rotateY(${x * 0.5}deg) rotateX(${-y * 0.5}deg) translateY(-4px)`;
+      document.querySelector('.card-secondary').style.transform = `rotateY(${x * 0.3}deg) rotateX(${-y * 0.3}deg) translateY(${y * 0.5}px)`;
+    });
+  </script>
 </body>
 </html>

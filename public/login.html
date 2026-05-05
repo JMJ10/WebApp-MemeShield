@@ -1,31 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemeShield — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+<body class="page-auth">
 
-<body class="landing">
+  <div class="noise-overlay"></div>
 
-<div class="card">
-  <h2>Enter Username</h2>
+  <div class="auth-wrapper">
+    <a href="/index.html" class="back-link">← Back</a>
 
-  <input id="username" placeholder="Username" />
-  <button onclick="login()">Continue</button>
-</div>
+    <div class="auth-card">
+      <div class="auth-logo">
+        <span class="logo-icon-lg">🛡</span>
+      </div>
+      <h2 class="auth-title">Welcome back</h2>
+      <p class="auth-sub">Enter your username to continue to MemeShield</p>
 
-<script>
-function login(){
-  const user = document.getElementById("username").value;
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="e.g. alex_m" maxlength="20" autocomplete="off" />
+      </div>
 
-  if(user.length < 2){
-    alert("Enter valid username");
-    return;
-  }
+      <button id="join-btn" class="btn-primary-full" onclick="login()">
+        Continue
+        <span class="btn-arrow">→</span>
+      </button>
 
-  localStorage.setItem("user", user);
-  window.location = "home.html";
-}
-</script>
+      <p class="auth-note">No account needed — just pick a name and start.</p>
+    </div>
+  </div>
 
+  <script>
+    const input = document.getElementById('username');
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') login(); });
+    input.focus();
+
+    function login() {
+      const name = input.value.trim();
+      if (!name) {
+        input.classList.add('input-error');
+        input.placeholder = 'Please enter a username';
+        setTimeout(() => input.classList.remove('input-error'), 600);
+        return;
+      }
+      localStorage.setItem('username', name);
+      window.location.href = '/home.html';
+    }
+  </script>
 </body>
 </html>
