@@ -15,12 +15,31 @@ app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 app.use(express.json());
 
+const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "home.html"));
+});
+app.get("/chat", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "chat.html"));
+});
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+app.get("/upload", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "upload.html"));
+});
+
 const upload = multer({dest:'uploads/'});
 
-// 🔴 REPLACE WITH YOUR HF SPACE
+
 const MODEL_API = "https://JMJ10-MemeShield-ML-Model-API.hf.space/predict";
 
 const users = new Map();
+
+
 
 // CHAT
 io.on("connection", (socket)=>{
@@ -76,4 +95,6 @@ app.post("/analyze", async (req,res)=>{
   }
 });
 
-server.listen(3000, ()=>console.log("Running on 3000"));
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
