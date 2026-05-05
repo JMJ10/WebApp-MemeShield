@@ -1,0 +1,38 @@
+body {
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.center {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+}
+
+.chat {
+  height:80vh;
+  overflow:auto;
+  background:white;
+  padding:10px;
+}
+
+.msg {
+  margin:10px 0;
+}
+
+.input {
+  display:flex;
+  gap:10px;
+  padding:10px;
+  background:white;
+}
+
+.offensive {
+  background: rgba(255,0,0,0.15);
+  border-left: 4px solid red;
+  padding:5px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MemeShield Chat</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <!-- HEADER -->
+    <div class="chat-header">
+        <h1>🛡 MemeShield Chat</h1>
+        <span id="connection-status" class="status-indicator offline">Offline</span>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="chat-messages" id="chat-messages"></div>
+
+    <!-- INPUT -->
+    <div class="message-input-container">
+        <button id="emoji-btn">😊</button>
+        <button onclick="document.getElementById('image-input').click()">📷</button>
+
+        <input id="message-input" placeholder="Type message..." />
+
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- EMOJI PICKER -->
+    <div id="emoji-picker" class="emoji-picker hidden"></div>
+
+    <!-- FILE INPUT -->
+    <input type="file" id="image-input" hidden />
+
+</div>
+
+<script src="chat.js"></script>
+
+</body>
+</html>

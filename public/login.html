@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="landing">
+
+<div class="card">
+  <h2>Enter Username</h2>
+
+  <input id="username" placeholder="Username" />
+  <button onclick="login()">Continue</button>
+</div>
+
+<script>
+function login(){
+  const user = document.getElementById("username").value;
+
+  if(user.length < 2){
+    alert("Enter valid username");
+    return;
+  }
+
+  localStorage.setItem("user", user);
+  window.location = "home.html";
+}
+</script>
+
+</body>
+</html>
